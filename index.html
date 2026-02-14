@@ -1,0 +1,2782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kulanath Sapkota | IT & Cybersecurity Student</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        /* ===== VARIABLES & RESET ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --primary-soft: #e6f0ff;
+            --secondary: #0f172a;
+            --secondary-light: #1e293b;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --success: #10b981;
+            --success-light: #d1fae5;
+            --danger: #ef4444;
+            --danger-light: #fee2e2;
+            --warning: #f59e0b;
+            --warning-light: #ffedd5;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --gray-soft: #e2e8f0;
+            --light: #f8fafc;
+            --white: #ffffff;
+            
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --gradient-light: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        /* ===== WELCOME ANIMATION ===== */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-dark);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: welcomeFade 2.5s ease-in-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes welcomeFade {
+            0% { opacity: 1; visibility: visible; }
+            70% { opacity: 1; visibility: visible; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        .welcome-content {
+            text-align: center;
+            color: white;
+            animation: welcomeScale 2s ease-in-out;
+        }
+
+        @keyframes welcomeScale {
+            0% { transform: scale(0.8); opacity: 0; }
+            20% { transform: scale(1.1); opacity: 1; }
+            40% { transform: scale(1); opacity: 1; }
+            60% { transform: scale(1); opacity: 1; }
+            80% { transform: scale(0.95); opacity: 0.8; }
+            100% { transform: scale(0.9); opacity: 0; }
+        }
+
+        .welcome-content i {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            animation: welcomeIcon 2s ease-in-out;
+        }
+
+        @keyframes welcomeIcon {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            50% { transform: rotate(-10deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .welcome-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* ===== ADMIN BUTTON ===== */
+        #adminButton {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 56px;
+            height: 56px;
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+
+        #adminButton:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        #adminButton.logged-in {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        /* ===== SECURE AUTH MODAL ===== */
+        #authModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            backdrop-filter: blur(10px);
+        }
+
+        #authModal.active {
+            display: flex;
+        }
+
+        .auth-box {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-2xl);
+            width: 90%;
+            max-width: 450px;
+            box-shadow: var(--shadow-2xl);
+            animation: modalSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-header i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .auth-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-header p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .auth-input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .auth-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid var(--gray-soft);
+            border-radius: var(--radius-lg);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: var(--light);
+        }
+
+        .auth-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-soft);
+            background: white;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .auth-btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ===== VERIFICATION CODE ===== */
+        .verification-section {
+            display: none;
+        }
+
+        .verification-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .verification-code {
+            display: flex;
+            gap: 0.75rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        .code-input {
+            width: 60px;
+            height: 70px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            border: 2px solid var(--gray-soft);
+            border-radius: var(--radius-lg);
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            transition: all 0.3s;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-soft);
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .code-input.filled {
+            border-color: var(--primary);
+            background: white;
+        }
+
+        /* ===== SECURITY INDICATORS ===== */
+        .security-indicators {
+            position: fixed;
+            top: 100px;
+            right: 25px;
+            z-index: 9999;
+        }
+
+        .security-alert {
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: white;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            animation: slideIn 0.3s;
+            border-left: 4px solid;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .security-alert.success {
+            border-left-color: var(--success);
+            color: var(--success);
+        }
+
+        .security-alert.warning {
+            border-left-color: var(--warning);
+            color: var(--warning);
+        }
+
+        .security-alert.danger {
+            border-left-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .lockout-timer {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: white;
+            color: var(--danger);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.95rem;
+            border-left: 4px solid var(--danger);
+            box-shadow: var(--shadow-lg);
+            z-index: 9999;
+            display: none;
+            font-weight: 600;
+        }
+
+        .session-timer {
+            position: fixed;
+            top: 100px;
+            right: 100px;
+            background: white;
+            color: var(--success);
+            padding: 0.75rem 1.25rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--success);
+            box-shadow: var(--shadow-lg);
+            display: none;
+            z-index: 9999;
+            font-weight: 600;
+        }
+
+        /* ===== ADMIN PANEL ===== */
+        #adminPanel {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width: 450px;
+            height: 100vh;
+            background: white;
+            box-shadow: var(--shadow-2xl);
+            z-index: 10002;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem;
+            overflow-y: auto;
+            border-left: 1px solid var(--gray-soft);
+        }
+
+        #adminPanel.active {
+            right: 0;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gray-soft);
+        }
+
+        .admin-header h3 {
+            font-size: 1.5rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .admin-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--gray-soft);
+            transition: all 0.3s;
+        }
+
+        .admin-section:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .admin-section h3 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--gray-soft);
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-soft);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 0.9rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        /* ===== FILE UPLOAD ===== */
+        .upload-area {
+            border: 2px dashed var(--gray-soft);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .upload-area p {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .upload-area small {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .image-preview {
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-soft);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .image-preview img:hover {
+            transform: scale(1.1);
+            border-color: var(--primary);
+        }
+
+        /* ===== ADMIN-ONLY BUTTONS ===== */
+        .admin-only {
+            display: none;
+        }
+
+        .admin-only.visible {
+            display: block;
+        }
+
+        .add-button {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .add-button:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transform: rotate(45deg);
+            transition: transform 0.3s;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(90deg);
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transition: width 0.3s;
+            border-radius: 3px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: rotateReverse 25s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateReverse {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-badge i {
+            color: var(--accent);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .profile-image-container {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-2xl);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            animation: morphing 10s ease-in-out infinite;
+        }
+
+        @keyframes morphing {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .profile-image-container:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            opacity: 0.1;
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-left-width: 6px;
+        }
+
+        .skill-item h4 {
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--gray-soft);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-soft);
+            position: relative;
+            margin-left: 60px;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--primary-soft);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: var(--primary-soft);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+        }
+
+        .timeline-company {
+            color: var(--gray);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-description {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            white-space: pre-line;
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects {
+            background: var(--light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .project-images {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: var(--primary-soft);
+        }
+
+        .project-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-images img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .project-date {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            background: var(--primary-soft);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .project-description {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex: 1;
+            white-space: pre-line;
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--primary-soft);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: var(--gradient-dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-title::after {
+            background: var(--gradient-accent);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.3s;
+            z-index: 1;
+        }
+
+        .social-link:hover::before {
+            left: 0;
+        }
+
+        .social-link i {
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .contact-email {
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .contact-email a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 2px;
+        }
+
+        .contact-email a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .footer-text {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero-content,
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .profile-image-container {
+                max-width: 350px;
+                height: 350px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            #adminPanel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                margin-left: 45px;
+            }
+
+            .timeline-item::before {
+                left: -35px;
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .profile-image-container {
+                height: 300px;
+            }
+
+            .verification-code {
+                gap: 0.5rem;
+            }
+
+            .code-input {
+                width: 45px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+
+            .auth-box {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WELCOME ANIMATION -->
+    <div class="welcome-overlay">
+        <div class="welcome-content">
+            <i class="fas fa-laptop-code"></i>
+            <h1>Welcome to My Portfolio</h1>
+            <p>Kulanath Sapkota - IT & Cybersecurity Professional</p>
+        </div>
+    </div>
+
+    <!-- ADMIN BUTTON -->
+    <button id="adminButton" onclick="toggleAdmin()" title="Admin Panel">
+        <i class="fas fa-user-shield"></i>
+    </button>
+
+    <!-- SECURITY INDICATORS -->
+    <div class="security-indicators">
+        <div class="security-alert" id="securityAlert"></div>
+    </div>
+    <div class="lockout-timer" id="lockoutTimer"></div>
+    <div class="session-timer" id="sessionTimer"></div>
+
+    <!-- SECURE AUTH MODAL -->
+    <div id="authModal">
+        <div class="auth-box">
+            <div class="auth-header">
+                <i class="fas fa-user-shield"></i>
+                <h3>Admin Login</h3>
+                <p>Secure access - Only for website owner</p>
+            </div>
+            
+            <!-- Password Form -->
+            <div id="passwordForm">
+                <div class="auth-input-group">
+                    <label>Email</label>
+                    <input type="email" class="auth-input" value="sapkotaaashis62@gmail.com" readonly disabled>
+                </div>
+                <div class="auth-input-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" class="auth-input" placeholder="Enter admin password" autocomplete="current-password">
+                </div>
+                <button class="auth-btn" onclick="verifyPassword()">
+                    <i class="fas fa-paper-plane"></i> Send Verification Code
+                </button>
+            </div>
+            
+            <!-- Verification Section -->
+            <div class="verification-section" id="verificationSection">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">Enter Verification Code</h3>
+                <p style="text-align: center; color: var(--gray); margin-bottom: 1.5rem;">6-digit code sent to your email</p>
+                <div class="verification-code">
+                    <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 1)" autocomplete="off">
+                    <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 2)" autocomplete="off">
+                    <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 3)" autocomplete="off">
+                    <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 4)" autocomplete="off">
+                    <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 5)" autocomplete="off">
+                    <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 6)" autocomplete="off">
+                </div>
+                <button class="auth-btn" onclick="verifyCode()">
+                    <i class="fas fa-check-circle"></i> Verify & Login
+                </button>
+                <p style="text-align: center; margin-top: 1.5rem;">
+                    <a href="#" onclick="resendCode()" style="color: var(--primary); text-decoration: none;">
+                        <i class="fas fa-redo"></i> Resend Code
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div id="adminPanel">
+        <div class="admin-header">
+            <h3><i class="fas fa-user-shield"></i> Admin Panel</h3>
+            <button onclick="closeAdmin()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray);">×</button>
+        </div>
+
+        <!-- Profile Image Upload -->
+        <div class="admin-section">
+            <h3><i class="fas fa-camera"></i> Profile Photo</h3>
+            <div class="upload-area" onclick="uploadImage('profile')">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Click to upload profile photo</p>
+                <small>JPG, PNG • Max 5MB • Visible on all devices</small>
+            </div>
+            <div class="image-preview" id="profilePreview"></div>
+        </div>
+
+        <!-- Experience Management -->
+        <div class="admin-section">
+            <h3><i class="fas fa-briefcase"></i> Experience Management</h3>
+            <div id="experienceContainer"></div>
+            <button class="btn btn-primary" onclick="addExperience()" style="width: 100%; margin-top: 1rem;">
+                <i class="fas fa-plus"></i> Add New Experience
+            </button>
+        </div>
+
+        <!-- Education Management -->
+        <div class="admin-section">
+            <h3><i class="fas fa-graduation-cap"></i> Education Management</h3>
+            <div id="educationContainer"></div>
+            <button class="btn btn-primary" onclick="addEducation()" style="width: 100%; margin-top: 1rem;">
+                <i class="fas fa-plus"></i> Add New Education
+            </button>
+        </div>
+
+        <!-- Projects Management -->
+        <div class="admin-section">
+            <h3><i class="fas fa-project-diagram"></i> Projects Management</h3>
+            <p style="color: var(--gray); margin-bottom: 1rem;">Upload project images (graduation photos, certificates, etc.)</p>
+            <div id="projectsContainer"></div>
+            <button class="btn btn-primary admin-only" onclick="addProject()" style="width: 100%; margin-top: 1rem;">
+                <i class="fas fa-plus"></i> Add New Project
+            </button>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="admin-section">
+            <h3><i class="fas fa-share-alt"></i> Social Links</h3>
+            <div class="form-group">
+                <label><i class="fab fa-linkedin"></i> LinkedIn URL</label>
+                <input type="url" id="linkedinUrl" class="form-control" placeholder="https://linkedin.com/in/...">
+            </div>
+            <div class="form-group">
+                <label><i class="fab fa-github"></i> GitHub URL</label>
+                <input type="url" id="githubUrl" class="form-control" placeholder="https://github.com/...">
+            </div>
+            <div class="form-group">
+                <label><i class="fab fa-twitter"></i> Twitter URL</label>
+                <input type="url" id="twitterUrl" class="form-control" placeholder="https://twitter.com/...">
+            </div>
+            <button class="btn btn-primary" onclick="saveSocialLinks()" style="width: 100%;">
+                <i class="fas fa-save"></i> Save Social Links
+            </button>
+        </div>
+
+        <!-- Logout Button -->
+        <button class="btn btn-danger" onclick="logout()" style="width: 100%; margin-top: 2rem;">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">KS</div>
+                <span class="logo-text">Kulanath Sapkota</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <div class="hero-badge">
+                        <i class="fas fa-badge-check"></i>
+                        <span>Entry-Level IT Technician</span>
+                    </div>
+                    <h1 class="hero-title animate__animated animate__fadeInUp">Kulanath <span>(Aashis)</span> Sapkota</h1>
+                    <h2 class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">Tech Support & Cybersecurity</h2>
+                    <p class="hero-description animate__animated animate__fadeInUp animate__delay-2s">
+                        Technology Enthusiast | Learning by Doing | Ready to Solve Real-World Tech Problems
+                    </p>
+                    <div class="social-links" id="heroSocialLinks"></div>
+                </div>
+                <div class="profile-image-container animate__animated animate__fadeInRight" id="profileImageContainer">
+                    <!-- Profile image will be loaded here -->
+                    <div style="width:100%; height:100%; background:linear-gradient(135deg, var(--primary-soft) 0%, white 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--primary); padding:2rem;">
+                        <i class="fas fa-user-tie" style="font-size:4rem; margin-bottom:1rem;"></i>
+                        <h3 style="font-size:1.5rem;">Kulanath Sapkota</h3>
+                        <p style="font-size:0.9rem;">IT & Cybersecurity Professional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeInUp">About Me</h2>
+            <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-1s">Entry-Level IT Technician | Passionate About Tech Support & Cybersecurity</p>
+            <div class="about-content">
+                <div class="about-text animate__animated animate__fadeInLeft">
+                    <p>Hi! I'm beginning my journey in IT, with a strong interest in tech support, cybersecurity, and networking. I've completed a Diploma and Advanced Diploma in IT, and I'm now studying for my Bachelor of Information Technology.</p>
+                    
+                    <p>I'm learning to troubleshoot technical issues, assist users with IT problems, and understand how systems work. I've started exploring Python, Power BI, and Tableau, and I'm excited to keep growing my knowledge.</p>
+                    
+                    <p>I enjoy helping people and solving problems, and I'm looking forward to gaining hands-on experience in IT support roles like Help Desk or Level 1 Technician.</p>
+                    
+                    <p style="margin-top: 2rem; font-weight: 600; color: var(--primary);">
+                        <i class="fas fa-handshake" style="margin-right: 0.75rem;"></i>
+                        Open to learning and collaborating!
+                    </p>
+                </div>
+                <div class="animate__animated animate__fadeInRight">
+                    <h3 style="margin-bottom: 2rem; color: var(--dark); display: flex; align-items: center; gap: 0.75rem; font-size: 1.3rem;">
+                        <i class="fas fa-star" style="color: var(--primary);"></i>
+                        Top Skills
+                    </h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <h4>Research Skills</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Microsoft Excel</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Analytical Skills</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Adobe Photoshop</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Technical Support</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Problem Solving</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeInUp">Experience</h2>
+            <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-1s">My professional journey and hands-on experience</p>
+            <div class="timeline" id="experienceTimeline">
+                <!-- Experience item will be loaded here -->
+            </div>
+            <div id="addExperienceBtnContainer" class="admin-only" style="text-align: center; margin-top: 3rem;">
+                <button class="add-button" onclick="addExperience()">
+                    <i class="fas fa-plus-circle"></i> Add New Experience
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section class="education" id="education">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeInUp">Education</h2>
+            <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-1s">My academic background and qualifications</p>
+            <div class="timeline" id="educationTimeline">
+                <!-- Education items will be loaded here -->
+            </div>
+            <div id="addEducationBtnContainer" class="admin-only" style="text-align: center; margin-top: 3rem;">
+                <button class="add-button" onclick="addEducation()">
+                    <i class="fas fa-plus-circle"></i> Add New Education
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeInUp">Projects</h2>
+            <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-1s">Some of my recent work and technical projects</p>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded here -->
+            </div>
+            <!-- Add Project Button - ONLY VISIBLE TO ADMIN -->
+            <div id="addProjectBtnContainer" class="admin-only" style="text-align: center; margin-top: 3rem;">
+                <button class="add-button" onclick="addProject()">
+                    <i class="fas fa-plus-circle"></i> Add New Project
+                </button>
+                <p style="color: var(--gray); font-size: 0.9rem; margin-top: 0.5rem;">This button is only visible to you when logged in</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeInUp">Let's Connect</h2>
+            <p class="section-subtitle animate__animated animate__fadeInUp animate__delay-1s" style="color: rgba(255,255,255,0.9);">I'm open to learning, collaborating, and growing in technology!</p>
+            <div class="contact-content animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="social-links" id="contactSocialLinks"></div>
+                <p class="contact-email">
+                    <i class="fas fa-envelope" style="margin-right: 0.75rem;"></i>
+                    <a href="mailto:sapkotaaashis62@gmail.com">sapkotaaashis62@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Kulanath Sapkota</div>
+            <p class="footer-text">
+                Entry-Level IT Technician | Passionate About Tech Support & Cybersecurity<br>
+                Technology Enthusiast | Beginner in IT | Learning by Doing
+            </p>
+            <div class="social-links" id="footerSocialLinks"></div>
+            <div class="copyright">
+                <p>&copy; 2024 Kulanath Sapkota. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== SECURITY CONFIGURATION =====
+        const SECURITY_CONFIG = {
+            email: "sapkotaaashis62@gmail.com",
+            password: "Kusu123",
+            maxAttempts: 3,
+            lockoutTimes: [5 * 60 * 1000, 10 * 60 * 1000, 15 * 60 * 1000],
+            sessionDuration: 30 * 60 * 1000,
+            verificationCodeLength: 6,
+            verificationCodeExpiry: 10 * 60 * 1000,
+        };
+
+        // ===== FREE IMAGE HOSTING API =====
+        const CLOUD_CONFIG = {
+            UPLOAD_URL: 'https://pomf.lain.la/upload.php'
+        };
+
+        // ===== STATE MANAGEMENT =====
+        let securityState = {
+            attempts: 0,
+            lastAttemptTime: 0,
+            isLockedOut: false,
+            currentLockoutIndex: 0,
+            sessionStart: 0,
+            verificationCode: '',
+            codeExpiry: 0
+        };
+
+        // ===== CLOUD STORAGE FUNCTIONS =====
+        async function uploadToCloud(imageData) {
+            try {
+                showSecurityAlert('📤 Uploading to cloud...', 'success');
+                
+                const base64Data = imageData.split(',')[1];
+                const blob = base64ToBlob(base64Data, 'image/jpeg');
+                
+                const formData = new FormData();
+                formData.append('files[]', blob, 'image.jpg');
+                
+                const response = await fetch(CLOUD_CONFIG.UPLOAD_URL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'cors'
+                });
+                
+                const data = await response.json();
+                
+                if (data.success && data.files && data.files[0] && data.files[0].url) {
+                    const imageUrl = data.files[0].url;
+                    showSecurityAlert('✅ Photo uploaded! Visible on all devices!', 'success');
+                    return {
+                        url: imageUrl,
+                        success: true
+                    };
+                } else {
+                    throw new Error('Upload failed');
+                }
+            } catch (error) {
+                console.error('Cloud upload error:', error);
+                showSecurityAlert('⚠️ Using local storage (device only)', 'warning');
+                return {
+                    url: imageData,
+                    success: false
+                };
+            }
+        }
+
+        function base64ToBlob(base64, type) {
+            const byteCharacters = atob(base64);
+            const byteArrays = [];
+            
+            for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+                const slice = byteCharacters.slice(offset, offset + 512);
+                
+                const byteNumbers = new Array(slice.length);
+                for (let i = 0; i < slice.length; i++) {
+                    byteNumbers[i] = slice.charCodeAt(i);
+                }
+                
+                const byteArray = new Uint8Array(byteNumbers);
+                byteArrays.push(byteArray);
+            }
+            
+            return new Blob(byteArrays, { type });
+        }
+
+        // ===== PROFILE IMAGE FUNCTIONS =====
+        async function saveProfileImage(imageData) {
+            try {
+                const cloudData = await uploadToCloud(imageData);
+                
+                const profileData = {
+                    url: cloudData.url,
+                    timestamp: Date.now(),
+                    cloud_stored: cloudData.success
+                };
+                
+                localStorage.setItem('profileImage', JSON.stringify(profileData));
+                
+                if (cloudData.success) {
+                    localStorage.setItem('profile_image_url', profileData.url);
+                }
+                
+                return profileData.url;
+            } catch (error) {
+                console.error('Error saving profile image:', error);
+                localStorage.setItem('profileImageBase64', imageData);
+                return imageData;
+            }
+        }
+
+        function getProfileImage() {
+            try {
+                const profileData = localStorage.getItem('profileImage');
+                if (profileData) {
+                    const parsed = JSON.parse(profileData);
+                    if (parsed.url && (parsed.url.startsWith('http') || parsed.url.startsWith('https'))) {
+                        return parsed.url;
+                    }
+                }
+                
+                const profileUrl = localStorage.getItem('profile_image_url');
+                if (profileUrl && (profileUrl.startsWith('http') || profileUrl.startsWith('https'))) {
+                    return profileUrl;
+                }
+                
+                const base64 = localStorage.getItem('profileImageBase64');
+                if (base64) {
+                    return base64;
+                }
+            } catch (error) {
+                console.error('Error getting profile image:', error);
+            }
+            return null;
+        }
+
+        // ===== PROJECT IMAGE FUNCTIONS =====
+        async function saveProjectImage(projectId, imageData) {
+            try {
+                const cloudData = await uploadToCloud(imageData);
+                
+                const projectImages = JSON.parse(localStorage.getItem('projectImages') || '{}');
+                
+                if (!projectImages[projectId]) {
+                    projectImages[projectId] = [];
+                }
+                
+                const imageRecord = {
+                    id: `${projectId}-${Date.now()}`,
+                    url: cloudData.url,
+                    timestamp: Date.now(),
+                    cloud_stored: cloudData.success
+                };
+                
+                projectImages[projectId].push(imageRecord);
+                localStorage.setItem('projectImages', JSON.stringify(projectImages));
+                
+                return imageRecord.id;
+            } catch (error) {
+                console.error('Error saving project image:', error);
+                return null;
+            }
+        }
+
+        function getProjectImages(projectId) {
+            try {
+                const projectImages = JSON.parse(localStorage.getItem('projectImages') || '{}');
+                const images = projectImages[projectId] || [];
+                
+                return images
+                    .filter(img => img.url)
+                    .sort((a, b) => b.timestamp - a.timestamp)
+                    .map(img => img.url);
+                    
+            } catch (error) {
+                console.error('Error getting project images:', error);
+                return [];
+            }
+        }
+
+        // ===== DEFAULT DATA - WITH YOUR FULL PROJECT DETAILS =====
+        function initializeDefaultData() {
+            // Experience
+            if (!localStorage.getItem('experience')) {
+                const defaultExperience = [{
+                    id: 'exp-1',
+                    title: "Personal Care Assistant",
+                    company: "Clayton Church Homes · Part-time",
+                    location: "Australia · On-site",
+                    date: "Aug 2023 - Present · 2 yrs 7 mos",
+                    description: "As a personal carer, I gained excellent technical flexibility, problem-solving, and customer service abilities that I can use in an IT support position. I ensured effective care and user assistance by using accessible technology, communicating clearly, and managing thorough documentation. I am equipped to provide excellent customer support, debug difficulties, and give IT solutions thanks to my expertise working with interdisciplinary teams and resolving conflicts with empathy. Applying these abilities as I move into a position as an IT Support Officer excites me.",
+                    skills: ["Analytical Skills", "Communication", "Problem Solving"]
+                }];
+                localStorage.setItem('experience', JSON.stringify(defaultExperience));
+            }
+
+            // Education - WITH FULL DETAILS
+            if (!localStorage.getItem('education')) {
+                const defaultEducation = [{
+                    id: 'edu-1',
+                    institution: "University of the Sunshine Coast",
+                    degree: "Bachelor's degree, Information and Communication Technology",
+                    date: "Jul 2025 - Jul 2027",
+                    description: "🎓 Bachelor of Information and Communications Technology\n\nI've officially begun my journey into the world of tech through the Bachelor of Information and Communications Technology at USC. This program is helping me build strong foundations in programming, networking, databases, cybersecurity, and systems analysis. I'm especially excited to apply real world skills in areas like software development and IT project management, and to grow my understanding of how technology can solve real problems and drive innovation.\n\nAs someone passionate about technology since childhood, this degree is a key step toward my goal of becoming a skilled IT professional and making a meaningful contribution especially in countries like Nepal where the tech industry is still growing. Looking forward to every challenge and opportunity this course brings!",
+                    activities: "Engaged in student-led IT projects and workshops • Active in cybersecurity and networking study groups • Exploring open-source contributions and tech meetups",
+                    grade: "",
+                    skills: []
+                }, {
+                    id: 'edu-2',
+                    institution: "Southern Academy of Business and Technology - SABT",
+                    degree: "Diploma and Advanced Diploma in IT",
+                    date: "Nov 2022 - Apr 2025",
+                    description: "Passionate about technology and cybersecurity, I have completed a Diploma and Advanced Diploma of IT from Southern Academy, where I developed a strong foundation in programming, databases, and IT systems. Throughout my studies, I gained hands-on experience with:\n\nProgramming & Development: Scratch, JavaScript, C++, Python\nDatabases & Analytics: SQL, Microsoft Excel, Power BI\nIT Tools & Business Applications: Microsoft Word, Xero\nCybersecurity & Networking: Basics of risk assessment, network security, and ethical hacking\n\nNow, I am enrolling in a Bachelor of IT to further explore cybersecurity, networking, and data security. As I continue learning, I am eager to gain real-world experience and connect with professionals in the field.",
+                    activities: "",
+                    grade: "Completed",
+                    skills: ["Analytical Skills", "Presentations", "Python", "SQL", "Microsoft Excel", "Power BI"]
+                }];
+                localStorage.setItem('education', JSON.stringify(defaultEducation));
+            }
+
+            // Projects - WITH YOUR FULL DETAILS
+            if (!localStorage.getItem('projects')) {
+                const defaultProjects = [{
+                    id: 'project-1',
+                    title: "Hardware Store Inventory System",
+                    date: "Sep 2025 - Oct 2025",
+                    description: "I built a Hardware Store Inventory System as a university project that shows how programming can solve real problems in retail. For customers, it makes shopping simple they can browse products like walking through store aisles, check prices and availability, add items to their cart, and get a proper receipt at checkout. For store managers, it provides secure tools to update inventory, track sales, and manage stock levels without hassle.\n\nThe system is reliable because it saves everything in a database, so no data is lost when it's closed and reopened. It also has built-in checks to stop mistakes, like selling more items than are available or entering invalid details. The menu-driven interface makes it easy to use, even for people with little technical background. I focused on making it stable so it handles errors smoothly instead of crashing.\n\nWorking on this project gave me hands-on experience in turning programming concepts into a real application. I learned how to design complex systems, manage data storage, add security, and test thoroughly. I ran 35 different test cases and all passed successfully, covering both normal operations and tricky edge cases.\n\nWhile the system works well as it is, there's room to grow. I could add a graphical interface, multi-user support, advanced reports, or even barcode scanner integration. Still, in its current form, it's a complete solution that could genuinely help small to medium hardware stores by making operations smoother, reducing mistakes, and improving customer service.",
+                    imageIds: [],
+                    skills: ["Python (Programming Language)", "Problem Solving", "Object-Oriented Programming", "Database Design", "Testing"]
+                }, {
+                    id: 'project-2',
+                    title: "Intelligent Home Environment Control",
+                    date: "Sep 2025 - Oct 2025",
+                    description: "Developed an Intelligent Home Environment Control system as a university project using a Raspberry Pi 4. The system automates lighting and comfort based on real time presence and environmental data.\n\nMain points:\n• Used an ultrasonic sensor to detect movement and control room lights automatically.\n• Used a temperature and humidity sensor to monitor room conditions in real time.\n• Classified the room as hot, cold, moderate, humid, or dry and showed clear visual feedback with LEDs.\n• Added push button control so users can turn lights on or off and record activity to the cloud.\n• Sent email alerts when no one is detected or someone is detected for a set time or when temperature or humidity go outside comfort limits.\n\nThis project gave hands on experience with Raspberry Pi 4 programming, working with sensors, GPIO control, basic web development, cloud logging, and email notifications.",
+                    imageIds: [],
+                    skills: ["Python (Programming Language)", "Raspberry Pi", "IoT", "Sensor Integration"]
+                }];
+                localStorage.setItem('projects', JSON.stringify(defaultProjects));
+            }
+
+            // Social links
+            if (!localStorage.getItem('socialLinks')) {
+                const defaultSocialLinks = {
+                    linkedin: "",
+                    github: "",
+                    twitter: "",
+                    facebook: "",
+                    instagram: "",
+                    youtube: ""
+                };
+                localStorage.setItem('socialLinks', JSON.stringify(defaultSocialLinks));
+            }
+        }
+
+        // ===== INITIALIZE =====
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDefaultData();
+            
+            const savedState = localStorage.getItem('securityState');
+            if (savedState) {
+                try {
+                    securityState = JSON.parse(savedState);
+                    securityState.lastAttemptTime = parseInt(securityState.lastAttemptTime);
+                    securityState.codeExpiry = parseInt(securityState.codeExpiry);
+                    securityState.sessionStart = parseInt(securityState.sessionStart);
+                    
+                    if (securityState.isLockedOut) {
+                        const lockoutDuration = SECURITY_CONFIG.lockoutTimes[securityState.currentLockoutIndex] || SECURITY_CONFIG.lockoutTimes[0];
+                        const timeSinceLockout = Date.now() - securityState.lastAttemptTime;
+                        
+                        if (timeSinceLockout < lockoutDuration) {
+                            updateLockoutTimer();
+                        } else {
+                            securityState.isLockedOut = false;
+                        }
+                    }
+                    
+                    if (securityState.sessionStart) {
+                        const sessionDuration = Date.now() - securityState.sessionStart;
+                        if (sessionDuration < SECURITY_CONFIG.sessionDuration) {
+                            document.getElementById('adminButton').classList.add('logged-in');
+                            showAdminButtons();
+                            startSessionTimer();
+                        } else {
+                            logout();
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error loading security state:', e);
+                }
+            }
+
+            loadProfileImage();
+            loadSocialLinks();
+            loadExperience();
+            loadEducation();
+            loadProjects();
+        });
+
+        // ===== ADMIN BUTTONS =====
+        function showAdminButtons() {
+            document.querySelectorAll('.admin-only').forEach(el => {
+                el.classList.add('visible');
+            });
+        }
+
+        function hideAdminButtons() {
+            document.querySelectorAll('.admin-only').forEach(el => {
+                el.classList.remove('visible');
+            });
+        }
+
+        // ===== SECURITY FUNCTIONS =====
+        function showSecurityAlert(message, type) {
+            const alert = document.getElementById('securityAlert');
+            alert.textContent = message;
+            alert.className = `security-alert ${type}`;
+            alert.style.display = 'block';
+            
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+
+        function updateLockoutTimer() {
+            if (securityState.isLockedOut) {
+                const lockoutDuration = SECURITY_CONFIG.lockoutTimes[securityState.currentLockoutIndex] || SECURITY_CONFIG.lockoutTimes[0];
+                const timeLeft = lockoutDuration - (Date.now() - securityState.lastAttemptTime);
+                
+                if (timeLeft <= 0) {
+                    securityState.isLockedOut = false;
+                    document.getElementById('lockoutTimer').style.display = 'none';
+                    saveSecurityState();
+                    return;
+                }
+                
+                const minutes = Math.floor(timeLeft / 60000);
+                const seconds = Math.floor((timeLeft % 60000) / 1000);
+                
+                const timer = document.getElementById('lockoutTimer');
+                timer.textContent = `Locked out for ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                timer.style.display = 'block';
+                
+                setTimeout(updateLockoutTimer, 1000);
+            }
+        }
+
+        function startSessionTimer() {
+            const timer = document.getElementById('sessionTimer');
+            const sessionStart = securityState.sessionStart;
+            
+            function updateTimer() {
+                const elapsed = Date.now() - sessionStart;
+                const remaining = SECURITY_CONFIG.sessionDuration - elapsed;
+                
+                if (remaining <= 0) {
+                    timer.style.display = 'none';
+                    logout();
+                    return;
+                }
+                
+                const minutes = Math.floor(remaining / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+                
+                timer.textContent = `Session: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                timer.style.display = 'block';
+                
+                setTimeout(updateTimer, 1000);
+            }
+            
+            updateTimer();
+        }
+
+        function saveSecurityState() {
+            localStorage.setItem('securityState', JSON.stringify(securityState));
+        }
+
+        // ===== AUTHENTICATION =====
+        function verifyPassword() {
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!password) {
+                showSecurityAlert('Please enter your password', 'warning');
+                return;
+            }
+            
+            if (securityState.isLockedOut) {
+                showSecurityAlert('Account is locked. Try again later.', 'danger');
+                return;
+            }
+            
+            if (password !== SECURITY_CONFIG.password) {
+                securityState.attempts++;
+                securityState.lastAttemptTime = Date.now();
+                
+                if (securityState.attempts >= SECURITY_CONFIG.maxAttempts) {
+                    securityState.isLockedOut = true;
+                    securityState.currentLockoutIndex = Math.min(securityState.attempts - SECURITY_CONFIG.maxAttempts, SECURITY_CONFIG.lockoutTimes.length - 1);
+                    updateLockoutTimer();
+                    showSecurityAlert('Too many failed attempts. Account locked.', 'danger');
+                } else {
+                    const attemptsLeft = SECURITY_CONFIG.maxAttempts - securityState.attempts;
+                    showSecurityAlert(`Incorrect password. ${attemptsLeft} attempts left.`, 'danger');
+                }
+                
+                saveSecurityState();
+                return;
+            }
+            
+            securityState.attempts = 0;
+            sendVerificationCode();
+        }
+
+        function sendVerificationCode() {
+            securityState.verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+            securityState.codeExpiry = Date.now() + SECURITY_CONFIG.verificationCodeExpiry;
+            
+            console.log(`Verification code: ${securityState.verificationCode}`);
+            alert(`Your verification code is: ${securityState.verificationCode}`);
+            
+            document.getElementById('passwordForm').style.display = 'none';
+            document.getElementById('verificationSection').classList.add('active');
+            
+            saveSecurityState();
+        }
+
+        function moveToNext(input, index) {
+            const value = input.value;
+            if (value.length === 1) {
+                if (index < 6) {
+                    document.querySelectorAll('.code-input')[index].focus();
+                }
+                input.classList.add('filled');
+            } else {
+                input.classList.remove('filled');
+            }
+        }
+
+        function verifyCode() {
+            const inputs = document.querySelectorAll('.code-input');
+            let enteredCode = '';
+            inputs.forEach(input => enteredCode += input.value);
+            
+            if (Date.now() > securityState.codeExpiry) {
+                showSecurityAlert('Code expired. Request new one.', 'danger');
+                return;
+            }
+            
+            if (enteredCode === securityState.verificationCode) {
+                securityState.sessionStart = Date.now();
+                document.getElementById('adminButton').classList.add('logged-in');
+                document.getElementById('authModal').classList.remove('active');
+                showAdminButtons();
+                startSessionTimer();
+                
+                securityState.attempts = 0;
+                securityState.isLockedOut = false;
+                securityState.verificationCode = '';
+                saveSecurityState();
+                
+                document.getElementById('loginPassword').value = '';
+                inputs.forEach(input => {
+                    input.value = '';
+                    input.classList.remove('filled');
+                });
+                
+                showSecurityAlert('Login successful!', 'success');
+            } else {
+                showSecurityAlert('Invalid code', 'danger');
+            }
+        }
+
+        function resendCode() {
+            sendVerificationCode();
+        }
+
+        // ===== SOCIAL LINKS =====
+        function loadSocialLinks() {
+            const socialLinks = JSON.parse(localStorage.getItem('socialLinks') || '{}');
+            
+            document.getElementById('linkedinUrl').value = socialLinks.linkedin || '';
+            document.getElementById('githubUrl').value = socialLinks.github || '';
+            document.getElementById('twitterUrl').value = socialLinks.twitter || '';
+            
+            updateSocialLinksDisplay(socialLinks);
+        }
+
+        function saveSocialLinks() {
+            const socialLinks = {
+                linkedin: document.getElementById('linkedinUrl').value.trim(),
+                github: document.getElementById('githubUrl').value.trim(),
+                twitter: document.getElementById('twitterUrl').value.trim(),
+                facebook: "",
+                instagram: "",
+                youtube: ""
+            };
+            
+            localStorage.setItem('socialLinks', JSON.stringify(socialLinks));
+            updateSocialLinksDisplay(socialLinks);
+            showSecurityAlert('Social links saved!', 'success');
+        }
+
+        function updateSocialLinksDisplay(socialLinks) {
+            const heroSocialLinks = document.getElementById('heroSocialLinks');
+            const contactSocialLinks = document.getElementById('contactSocialLinks');
+            const footerSocialLinks = document.getElementById('footerSocialLinks');
+            
+            function createSocialLinkHTML(platform, url) {
+                if (!url) return '';
+                
+                const icons = {
+                    linkedin: 'fab fa-linkedin-in',
+                    github: 'fab fa-github',
+                    twitter: 'fab fa-twitter'
+                };
+                
+                return `<a href="${url}" target="_blank" class="social-link"><i class="${icons[platform]}"></i></a>`;
+            }
+            
+            heroSocialLinks.innerHTML = '';
+            contactSocialLinks.innerHTML = '';
+            footerSocialLinks.innerHTML = '';
+            
+            for (const [platform, url] of Object.entries(socialLinks)) {
+                if (url) {
+                    const html = createSocialLinkHTML(platform, url);
+                    heroSocialLinks.innerHTML += html;
+                    contactSocialLinks.innerHTML += html;
+                    footerSocialLinks.innerHTML += html;
+                }
+            }
+            
+            // Default social links if none saved
+            if (heroSocialLinks.innerHTML === '') {
+                heroSocialLinks.innerHTML = `
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                `;
+                contactSocialLinks.innerHTML = heroSocialLinks.innerHTML;
+                footerSocialLinks.innerHTML = heroSocialLinks.innerHTML;
+            }
+        }
+
+        // ===== EXPERIENCE FUNCTIONS =====
+        function loadExperience() {
+            const experiences = JSON.parse(localStorage.getItem('experience') || '[]');
+            const container = document.getElementById('experienceContainer');
+            const timeline = document.getElementById('experienceTimeline');
+            
+            container.innerHTML = '';
+            timeline.innerHTML = '';
+            
+            experiences.forEach((exp, index) => {
+                // Admin panel
+                container.innerHTML += `
+                    <div class="admin-section">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control" value="${exp.title.replace(/"/g, '&quot;')}" onchange="updateExperienceField(${index}, 'title', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" class="form-control" value="${exp.company.replace(/"/g, '&quot;')}" onchange="updateExperienceField(${index}, 'company', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" class="form-control" value="${exp.location.replace(/"/g, '&quot;')}" onchange="updateExperienceField(${index}, 'location', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="text" class="form-control" value="${exp.date.replace(/"/g, '&quot;')}" onchange="updateExperienceField(${index}, 'date', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="4" onchange="updateExperienceField(${index}, 'description', this.value)">${exp.description.replace(/"/g, '&quot;')}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Skills (comma separated)</label>
+                            <input type="text" class="form-control" value="${exp.skills ? exp.skills.join(', ') : ''}" onchange="updateExperienceSkills(${index}, this.value)">
+                        </div>
+                        <button class="btn btn-danger btn-sm" onclick="deleteExperience(${index})">Delete</button>
+                    </div>
+                `;
+                
+                // Visitor view
+                timeline.innerHTML += `
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-title">${exp.title}</h3>
+                                <p class="timeline-company"><i class="fas fa-building"></i> ${exp.company}</p>
+                            </div>
+                            <span class="timeline-date">${exp.date}</span>
+                        </div>
+                        <p class="timeline-company" style="color: var(--primary);"><i class="fas fa-map-marker-alt"></i> ${exp.location}</p>
+                        <div class="timeline-description">${exp.description.replace(/\n/g, '<br>')}</div>
+                        ${exp.skills && exp.skills.length > 0 ? `<div class="project-skills">${exp.skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}</div>` : ''}
+                    </div>
+                `;
+            });
+        }
+
+        function addExperience() {
+            const experiences = JSON.parse(localStorage.getItem('experience') || '[]');
+            experiences.push({
+                id: 'exp-' + Date.now(),
+                title: "New Position",
+                company: "Company Name",
+                location: "Location",
+                date: "Month Year - Present",
+                description: "Describe your responsibilities...",
+                skills: []
+            });
+            localStorage.setItem('experience', JSON.stringify(experiences));
+            loadExperience();
+            showSecurityAlert('Experience added!', 'success');
+        }
+
+        function updateExperienceField(index, field, value) {
+            const experiences = JSON.parse(localStorage.getItem('experience') || '[]');
+            if (experiences[index]) {
+                experiences[index][field] = value;
+                localStorage.setItem('experience', JSON.stringify(experiences));
+                loadExperience();
+            }
+        }
+
+        function updateExperienceSkills(index, skillsString) {
+            const experiences = JSON.parse(localStorage.getItem('experience') || '[]');
+            if (experiences[index]) {
+                experiences[index].skills = skillsString.split(',').map(s => s.trim()).filter(s => s);
+                localStorage.setItem('experience', JSON.stringify(experiences));
+                loadExperience();
+            }
+        }
+
+        function deleteExperience(index) {
+            if (confirm('Delete this experience?')) {
+                const experiences = JSON.parse(localStorage.getItem('experience') || '[]');
+                experiences.splice(index, 1);
+                localStorage.setItem('experience', JSON.stringify(experiences));
+                loadExperience();
+                showSecurityAlert('Experience deleted', 'success');
+            }
+        }
+
+        // ===== EDUCATION FUNCTIONS =====
+        function loadEducation() {
+            const education = JSON.parse(localStorage.getItem('education') || '[]');
+            const container = document.getElementById('educationContainer');
+            const timeline = document.getElementById('educationTimeline');
+            
+            container.innerHTML = '';
+            timeline.innerHTML = '';
+            
+            education.forEach((edu, index) => {
+                // Admin panel
+                container.innerHTML += `
+                    <div class="admin-section">
+                        <div class="form-group">
+                            <label>Institution</label>
+                            <input type="text" class="form-control" value="${edu.institution.replace(/"/g, '&quot;')}" onchange="updateEducationField(${index}, 'institution', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Degree</label>
+                            <input type="text" class="form-control" value="${edu.degree.replace(/"/g, '&quot;')}" onchange="updateEducationField(${index}, 'degree', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="text" class="form-control" value="${edu.date.replace(/"/g, '&quot;')}" onchange="updateEducationField(${index}, 'date', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="4" onchange="updateEducationField(${index}, 'description', this.value)">${edu.description.replace(/"/g, '&quot;')}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Activities</label>
+                            <input type="text" class="form-control" value="${edu.activities || ''}" onchange="updateEducationField(${index}, 'activities', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Grade</label>
+                            <input type="text" class="form-control" value="${edu.grade || ''}" onchange="updateEducationField(${index}, 'grade', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Skills (comma separated)</label>
+                            <input type="text" class="form-control" value="${edu.skills ? edu.skills.join(', ') : ''}" onchange="updateEducationSkills(${index}, this.value)">
+                        </div>
+                        <button class="btn btn-danger btn-sm" onclick="deleteEducation(${index})">Delete</button>
+                    </div>
+                `;
+                
+                // Visitor view
+                let skillsHtml = '';
+                if (edu.skills && edu.skills.length > 0) {
+                    skillsHtml = `<div class="project-skills">${edu.skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}</div>`;
+                }
+                
+                timeline.innerHTML += `
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-title">${edu.institution}</h3>
+                                <p class="timeline-company"><i class="fas fa-graduation-cap"></i> ${edu.degree}</p>
+                            </div>
+                            <span class="timeline-date">${edu.date}</span>
+                        </div>
+                        ${edu.grade ? `<p style="color: var(--success); margin-bottom: 0.5rem;"><i class="fas fa-trophy"></i> Grade: ${edu.grade}</p>` : ''}
+                        ${edu.activities ? `<p style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-users"></i> ${edu.activities}</p>` : ''}
+                        <div class="timeline-description">${edu.description.replace(/\n/g, '<br>')}</div>
+                        ${skillsHtml}
+                    </div>
+                `;
+            });
+        }
+
+        function addEducation() {
+            const education = JSON.parse(localStorage.getItem('education') || '[]');
+            education.push({
+                id: 'edu-' + Date.now(),
+                institution: "New Institution",
+                degree: "Degree",
+                date: "Month Year - Month Year",
+                description: "Describe your education...",
+                activities: "",
+                grade: "",
+                skills: []
+            });
+            localStorage.setItem('education', JSON.stringify(education));
+            loadEducation();
+            showSecurityAlert('Education added!', 'success');
+        }
+
+        function updateEducationField(index, field, value) {
+            const education = JSON.parse(localStorage.getItem('education') || '[]');
+            if (education[index]) {
+                education[index][field] = value;
+                localStorage.setItem('education', JSON.stringify(education));
+                loadEducation();
+            }
+        }
+
+        function updateEducationSkills(index, skillsString) {
+            const education = JSON.parse(localStorage.getItem('education') || '[]');
+            if (education[index]) {
+                education[index].skills = skillsString.split(',').map(s => s.trim()).filter(s => s);
+                localStorage.setItem('education', JSON.stringify(education));
+                loadEducation();
+            }
+        }
+
+        function deleteEducation(index) {
+            if (confirm('Delete this education?')) {
+                const education = JSON.parse(localStorage.getItem('education') || '[]');
+                education.splice(index, 1);
+                localStorage.setItem('education', JSON.stringify(education));
+                loadEducation();
+                showSecurityAlert('Education deleted', 'success');
+            }
+        }
+
+        // ===== PROJECT FUNCTIONS =====
+        async function loadProjects() {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            const container = document.getElementById('projectsContainer');
+            const grid = document.getElementById('projectsGrid');
+            
+            container.innerHTML = '';
+            grid.innerHTML = '';
+            
+            for (const [index, project] of projects.entries()) {
+                const projectImages = getProjectImages(project.id);
+                
+                // Admin panel
+                container.innerHTML += `
+                    <div class="admin-section">
+                        <div class="form-group">
+                            <label>Project Title</label>
+                            <input type="text" class="form-control" value="${project.title.replace(/"/g, '&quot;')}" onchange="updateProjectField(${index}, 'title', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="text" class="form-control" value="${project.date.replace(/"/g, '&quot;')}" onchange="updateProjectField(${index}, 'date', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="4" onchange="updateProjectField(${index}, 'description', this.value)">${project.description.replace(/"/g, '&quot;')}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Skills (comma separated)</label>
+                            <input type="text" class="form-control" value="${project.skills ? project.skills.join(', ') : ''}" onchange="updateProjectSkills(${index}, this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Project Images (${projectImages.length})</label>
+                            <div class="upload-area" onclick="uploadImage('${project.id}')">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload project image</p>
+                                <small>Upload graduation photos, certificates, etc.</small>
+                            </div>
+                            ${projectImages.length > 0 ? `
+                                <div class="image-preview">
+                                    ${projectImages.map((img, imgIndex) => `
+                                        <div style="position: relative;">
+                                            <img src="${img}" alt="Project Image">
+                                            <button class="btn btn-danger btn-sm" onclick="deleteProjectImage('${project.id}', ${imgIndex})" 
+                                                    style="position: absolute; top: 2px; right: 2px; padding: 2px 6px; width: 20px; height: 20px; border-radius: 50%;">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <button class="btn btn-danger btn-sm" onclick="deleteProject(${index})">Delete Project</button>
+                    </div>
+                `;
+                
+                // Visitor view - with full description
+                const firstImage = projectImages.length > 0 ? projectImages[0] : '';
+                const displayImage = firstImage ? 
+                    `<img src="${firstImage}" alt="${project.title}">` : 
+                    `<div style="width:100%; height:100%; background:var(--primary-soft); display:flex; align-items:center; justify-content:center; color:var(--primary); font-size:3rem;"><i class="fas fa-laptop-code"></i></div>`;
+                
+                grid.innerHTML += `
+                    <div class="project-card">
+                        <div class="project-images">${displayImage}</div>
+                        <div class="project-content">
+                            <h3 class="project-title">${project.title}</h3>
+                            <div class="project-date">${project.date}</div>
+                            <div class="project-description">${project.description.replace(/\n/g, '<br>')}</div>
+                            <div class="project-skills">
+                                ${project.skills ? project.skills.map(s => `<span class="skill-tag">${s}</span>`).join('') : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function addProject() {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            projects.push({
+                id: 'project-' + Date.now(),
+                title: 'New Project',
+                date: 'Month Year - Month Year',
+                description: 'Describe your project here...',
+                imageIds: [],
+                skills: []
+            });
+            localStorage.setItem('projects', JSON.stringify(projects));
+            loadProjects();
+            showSecurityAlert('New project added! (Only visible to admin)', 'success');
+        }
+
+        function updateProjectField(index, field, value) {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            if (projects[index]) {
+                projects[index][field] = value;
+                localStorage.setItem('projects', JSON.stringify(projects));
+                loadProjects();
+            }
+        }
+
+        function updateProjectSkills(index, skillsString) {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            if (projects[index]) {
+                projects[index].skills = skillsString.split(',').map(s => s.trim()).filter(s => s);
+                localStorage.setItem('projects', JSON.stringify(projects));
+                loadProjects();
+            }
+        }
+
+        function deleteProjectImage(projectId, imageIndex) {
+            if (confirm('Delete this image?')) {
+                const projectImages = JSON.parse(localStorage.getItem('projectImages') || '{}');
+                if (projectImages[projectId] && projectImages[projectId][imageIndex]) {
+                    projectImages[projectId].splice(imageIndex, 1);
+                    if (projectImages[projectId].length === 0) {
+                        delete projectImages[projectId];
+                    }
+                    localStorage.setItem('projectImages', JSON.stringify(projectImages));
+                    loadProjects();
+                    showSecurityAlert('Image deleted', 'success');
+                }
+            }
+        }
+
+        function deleteProject(index) {
+            if (confirm('Delete this project?')) {
+                const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+                const projectId = projects[index].id;
+                
+                const projectImages = JSON.parse(localStorage.getItem('projectImages') || '{}');
+                delete projectImages[projectId];
+                localStorage.setItem('projectImages', JSON.stringify(projectImages));
+                
+                projects.splice(index, 1);
+                localStorage.setItem('projects', JSON.stringify(projects));
+                loadProjects();
+                showSecurityAlert('Project deleted', 'success');
+            }
+        }
+
+        // ===== IMAGE UPLOAD =====
+        async function uploadImage(type) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            
+            input.onchange = async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                if (file.size > 5 * 1024 * 1024) {
+                    showSecurityAlert('File too large (max 5MB)', 'warning');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = async (event) => {
+                    const base64Image = event.target.result;
+                    
+                    if (type === 'profile') {
+                        await saveProfileImage(base64Image);
+                        loadProfileImage();
+                    } else {
+                        const imageId = await saveProjectImage(type, base64Image);
+                        if (imageId) {
+                            loadProjects();
+                        }
+                    }
+                };
+                reader.readAsDataURL(file);
+            };
+            
+            input.click();
+        }
+
+        function loadProfileImage() {
+            const container = document.getElementById('profileImageContainer');
+            const preview = document.getElementById('profilePreview');
+            const imageUrl = getProfileImage();
+            
+            if (imageUrl) {
+                container.innerHTML = `<img src="${imageUrl}" alt="Profile Photo">`;
+                preview.innerHTML = `<img src="${imageUrl}" alt="Preview" onclick="deleteProfileImage()" style="cursor: pointer;">`;
+            } else {
+                container.innerHTML = `<div style="width:100%; height:100%; background:linear-gradient(135deg, var(--primary-soft) 0%, white 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--primary); padding:2rem;"><i class="fas fa-user-tie" style="font-size:4rem; margin-bottom:1rem;"></i><h3 style="font-size:1.5rem;">Kulanath Sapkota</h3><p style="font-size:0.9rem;">IT & Cybersecurity Professional</p></div>`;
+                preview.innerHTML = '';
+            }
+        }
+
+        function deleteProfileImage() {
+            if (confirm('Remove profile photo?')) {
+                localStorage.removeItem('profileImage');
+                localStorage.removeItem('profileImageBase64');
+                localStorage.removeItem('profile_image_url');
+                loadProfileImage();
+                showSecurityAlert('Photo removed', 'success');
+            }
+        }
+
+        // ===== ADMIN CONTROLS =====
+        function toggleAdmin() {
+            const sessionActive = securityState.sessionStart && (Date.now() - securityState.sessionStart) < SECURITY_CONFIG.sessionDuration;
+            
+            if (!sessionActive) {
+                document.getElementById('authModal').classList.add('active');
+                document.getElementById('passwordForm').style.display = 'block';
+                document.getElementById('verificationSection').classList.remove('active');
+                document.getElementById('loginPassword').value = '';
+                document.getElementById('loginPassword').focus();
+            } else {
+                document.getElementById('adminPanel').classList.toggle('active');
+            }
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminPanel').classList.remove('active');
+        }
+
+        function logout() {
+            securityState.sessionStart = 0;
+            document.getElementById('adminButton').classList.remove('logged-in');
+            document.getElementById('adminPanel').classList.remove('active');
+            document.getElementById('sessionTimer').style.display = 'none';
+            hideAdminButtons();
+            saveSecurityState();
+            showSecurityAlert('Logged out', 'success');
+        }
+
+        document.getElementById('authModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
